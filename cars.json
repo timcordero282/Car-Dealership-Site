@@ -1,0 +1,82 @@
+[
+    {
+        "brand": "Nissan",
+        "car_mod": "Altima",
+        "year": "2021",
+        "color": "black",
+        "interior_color": "black",
+        "miles": "2,000",
+        "car_img": "/CarPics/nissan_altima.jpg",
+        "price": 24350
+    },
+    {
+        "brand": "Nissan",
+        "car_mod": "Maxima",
+        "year": "2020",
+        "color": "red",
+        "interior_color": "black",
+        "miles": "10,000",
+        "car_img": "/CarPics/nissan_maxima.jpg",
+        "price": 34450
+    },
+    {
+        "brand": "Honda",
+        "car_mod": "Civic",
+        "year": "2017",
+        "color": "gray",
+        "interior_color": "black",
+        "miles": "35,000",
+        "car_img": "/CarPics/honda_civic_gray.jpg",
+        "price": 17000
+    },
+    {
+        "brand": "Honda",
+        "car_mod": "Civic",
+        "year": "2019",
+        "color": "blue",
+        "interior_color": "Dark gray",
+        "miles": "13,222",
+        "car_img": "/CarPics/honda_civic_blue.jpg",
+        "price": 19450
+    },
+    {
+        "brand": "Subaru",
+        "car_mod": "Legacy",
+        "year": "2021",
+        "color": "white",
+        "interior_color": "black",
+        "miles": "500",
+        "car_img": "/CarPics/subaru_legacy.png",
+        "price": 22895
+    },
+    {
+        "brand": "Toyota",
+        "car_mod": "Camry",
+        "year": "2021",
+        "color": "silver",
+        "interior_color": "black",
+        "miles": "600",
+        "car_img": "/CarPics/toyota_camry.jpg",
+        "price": 24380
+    },
+    {
+        "brand": "Hyundai",
+        "car_mod": "Elantra",
+        "year": "2020",
+        "color": "white",
+        "interior_color": "tan",
+        "miles": "11,780",
+        "car_img": "/CarPics/hyundai_elantra.jpg",
+        "price": 19300
+    },
+    {
+        "brand": "Mercedes-Benz",
+        "car_mod": "E-Class",
+        "year": "2021",
+        "color": "silver",
+        "interior_color": "tan",
+        "miles": "200",
+        "car_img": "/CarPics/mercedes_Eclass.jpg",
+        "price": 54250
+    }
+]

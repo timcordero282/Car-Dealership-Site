@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- METAS **********-->
+    <!-- meta charset-->
+    <meta charset="UTF-8">
+    <!--meta author-->
+    <meta name="author" content="Tim Cordero">
+    <!--meta description-->
+    <meta name="description" content="Project: Auto Sales Website">
+    <!--meta keywords-->
+    <meta name="keywords" content="Cars, Auto, Trucks, Motor">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--***********************************-->
+    <!-- Project subject : Auto Sales website-->
+    <title>Tim Cordero's Car Sales</title>
+
+    <!-- 3 files below are for the use of bootstrap formatting-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!--FONT AWESOME CONNECTION-->
+    <script src="https://kit.fontawesome.com/cc293f0187.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-color: beige;
+            color: rgb(29, 98, 228);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        button {
+            padding: 5px;
+            font-size: large;
+            border-radius: 30%;
+        }
+
+        /*animates the svg logo to rotate once the page is loaded*/
+        #logo {
+            animation: rotate 2s;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .arrow {
+            font-size: medium;
+        }
+
+        .showroom {
+            width: 300px;
+            height: 200px;
+        }
+
+        /* for table with gallery */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+        }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            flex: 50%;
+            padding: 0;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+
+        /* pseudo-class used on showroom area. When user hovers in showroom background color changes*/
+        #showroom:hover {
+            background-color: rgb(29, 98, 228);
+        }
+
+        /* another pseudo-class element on links in buttons. change color when mouse over link */
+        a:hover {
+            color: beige;
+            background-color: rgb(29, 98, 228);
+        }
+
+        /* pseudo-class for the font awesome icon to scroll back to top*/
+        #topBTN:hover {
+            color: beige;
+            background-color: rgb(29, 98, 228);
+        }
+
+
+        /*Slide show CSS */
+        * {
+            box-sizing: border-box
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* Fading animation */
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 30s;
+            animation-name: fade;
+            animation-duration: 30s;
+        }
+
+        @-webkit-keyframes fade {
+            from {
+                opacity: 1
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 1
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header is a new HTML5 tag, to represent navigational elements-->
+    <!-- nav bar to make navigation easier -->
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">TC Auto</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="Cars.html">CARS</a></li>
+                    <li><a href="Trucks.html">TRUCKS</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Main is a new HTML5 tag, to represent the main body of a document-->
+    <main>
+        <!-- Section is a new HTML5 tag, to represent a section of a document: in this case my site logo -->
+        <section>
+            <!-- vehicle tire svg logo-->
+            <svg id="logo" width="500" height="480" style="background-color: beige;">
+                <circle cx="250" cy="275" r="205" style="fill: #000000;" />
+                <circle cx="250" cy="275" r="200" style="fill: #184fb4;" />
+                <circle cx="250" cy="275" r="140" style="fill: #f3f7d1;" />
+                <circle cx="250" cy="275" r="60" style="fill: #184fb4;" />
+                <line x1="110" y1="270" x2="192" y2="270" style="stroke:rgb(0,0,0);stroke-width:30" />
+                <line x1="250" y1="132" x2="250" y2="218" style="stroke:rgb(0,0,0);stroke-width:30" />
+                <line x1="308" y1="270" x2="390" y2="270" style="stroke:rgb(0,0,0);stroke-width:30" />
+                <line x1="220" y1="324" x2="180" y2="400" style="stroke:rgb(0,0,0);stroke-width:30" />
+                <line x1="280" y1="324" x2="328" y2="395" style="stroke:rgb(0,0,0);stroke-width:30" />
+            </svg>
+        </section>
+
+        <h1>Tim Cordero's Auto Sales</h1><br />
+        <h3>Welcome to Tim Cordero's Vehicle Sales. Feel free to browse for cars or trucks in our inventory!</h3><br />
+        <!-- buttons in case user does not see navbar-->
+        <!--font awesome icons added to buttons-->
+        <button><a href="Cars.html">Cars<i class="fas fa-arrow-right arrow"></i></a></button> &nbsp;
+        <button><a href="Trucks.html">Trucks<i class="fas fa-arrow-right arrow"></i></a></button>
+
+
+        <h3>Or, check out our showroom for some of our finest vehicles</h3>
+        <!-- Table to display vehicles in showroom-->
+        <h4>Gallery</h4>
+        <div id="showroom">
+            <div class="row">
+                <div class="column">
+                    <img class="showroom" src="/CarPics/mercedes_Eclass.jpg">
+                    <img class="showroom" src="/CarPics/honda_civic_blue.jpg">
+                    <img class="showroom" src="/CarPics/hyundai_elantra.jpg">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <img class="showroom" src="/TruckPics/Chevrolet_Silverado_Midnight.jpg">
+                    <img class="showroom" src="/TruckPics/RAM_1500.jpg">
+                    <img class="showroom" src="/TruckPics/Ford_F150.jpg">
+                </div>
+            </div>
+        </div>
+        <br />
+        <h4>Slideshow</h4>
+        <!--SLIDESHOW FROM HOMEWORK DEMOS*************-->
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 6</div>
+                <img src="/CarPics/mercedes_Eclass.jpg" style="width:500px">
+                <div class="text">Mercedes Eclass</div>
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 6</div>
+                <img src="/CarPics/honda_civic_blue.jpg" style="width:500px">
+                <div class="text">Honda Civic</div>
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 6</div>
+                <img src="/CarPics/hyundai_elantra.jpg" style="width:500px">
+                <div class="text">Hyundai Elantra</div>
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 6</div>
+                <img src="/TruckPics/Chevrolet_Silverado_Midnight.jpg" style="width:500px">
+                <div class="text">Chevy Silverado</div>
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">5 / 6</div>
+                <img src="/TruckPics/RAM_1500.jpg" style="width:500px">
+                <div class="text">Ram 1500</div>
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">6 / 6</div>
+                <img src="/TruckPics/Ford_F150.jpg" style="width:500px">
+                <div class="text">Ford F150</div>
+            </div>
+        </div>
+        <!--************************************************-->
+
+        <br />
+        <button id="topBTN" onclick="topFunction()"><i class="fas fa-arrow-up"></i></button>
+        <p>Scroll back to top</p>
+    </main>
+    <script>
+        //Get the button:
+        mybutton = document.getElementById("topBTN");
+
+
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+
+
+        // for slideshow
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+
+
+    </script>
+</body>
+
+</html>

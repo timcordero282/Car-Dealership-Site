@@ -1,0 +1,73 @@
+[
+    {
+        "brand": "Chevrolet",
+        "truck_mod": "Silverado",
+        "year": "2021",
+        "color": "Midnight",
+        "interior_color": "black",
+        "miles": "888",
+        "truck_img": "/TruckPics/Chevrolet_Silverado_Midnight.jpg",
+        "price": 31000
+    },
+    {
+        "brand": "Ford",
+        "truck_mod": "F150",
+        "year": "2021",
+        "color": "Black",
+        "interior_color": "black",
+        "miles": "1,145",
+        "truck_img": "/TruckPics/Ford_F150.jpg",
+        "price": 28940
+    },
+    {
+        "brand": "Ram",
+        "truck_mod": "1500",
+        "year": "2021",
+        "color": "Light Brown",
+        "interior_color": "gray",
+        "miles": "35,000",
+        "truck_img": "/TruckPics/RAM_1500.jpg",
+        "price": 32795
+    },
+    {
+        "brand": "Chevrolet",
+        "truck_mod": "Colorado",
+        "year": "2019",
+        "color": "silver",
+        "interior_color": "Black",
+        "miles": "25,000",
+        "truck_img": "/TruckPics/Chevrolet_Colorado.jpg",
+        "price": 25998
+    },
+    {
+        "brand": "GMC",
+        "truck_mod": "Sierra 1500",
+        "year": "2017",
+        "color": "white",
+        "interior_color": "black",
+        "miles": "32,728",
+        "truck_img": "/TruckPics/GMC_Sierra.jpg",
+        "price": 28500
+    },
+    {
+        "brand": "Toyota",
+        "truck_mod": "Tacoma",
+        "year": "2020",
+        "color": "green",
+        "interior_color": "dark gray",
+        "miles": "8,000",
+        "truck_img": "/TruckPics/Toyota_Tacoma.jpg",
+        "price": 26050
+    },
+    {
+        "brand": "Ford",
+        "truck_mod": "F150 RAPTOR",
+        "year": "2020",
+        "color": "Red",
+        "interior_color": "Black",
+        "miles": "5,236",
+        "truck_img": "/TruckPics/Ford_F150RAPTOR.jpg",
+        "price": 51299
+    }
+
+]

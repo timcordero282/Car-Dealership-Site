@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- METAS **********-->
+    <!-- meta charset-->
+    <meta charset="UTF-8">
+    <!--meta author-->
+    <meta name="author" content="Tim Cordero">
+    <!--meta description-->
+    <meta name="description" content="Project: Auto Sales Website. Trucks Page">
+    <!--meta keywords-->
+    <meta name="keywords" content="Cars, Auto, Trucks, Motor">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--***********************************-->
+
+    <title>Tim Cordero's Car Sales</title>
+
+    <!-- 3 files below are for the use of bootstrap formatting-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- The VUE CDN ! Next version 3 ******VUE PAGE-->
+    <script src="https://unpkg.com/vue@next"></script>
+    <meta name="keywords" content="Vue, La Salle University, Tim Cordero" />
+    <meta name="description" content="Vue example" />
+
+    <style>
+        body {
+            background-color: beige;
+            color: rgb(29, 98, 228);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        button {
+            padding: 5px;
+            font-size: large;
+        }
+
+        input {
+            width: 80px;
+        }
+        button:hover{
+            color: beige;
+            background-color: rgb(29, 98, 228);
+        }
+        input:hover{
+            color: beige;
+            background-color: rgb(29, 98, 228);
+        }
+
+        #calc {
+            width: 250px;
+        }
+
+        /*grid formatting */
+        .wrapper {
+            text-align: left;
+            display: grid;
+            grid-gap: 5px;
+            width: 500px;
+            grid-template-columns: 140px 150px 400px;
+            background-color: #000;
+            color: #111;
+            border-radius: 5px;
+            /* justify-content: center; */
+            margin-Left: auto;
+            margin-right: auto;
+        }
+
+        .box {
+            background-color: beige;
+            color: rgb(29, 98, 228);
+            border-radius: 5px;
+            padding: 30px;
+            font-size: 1em;
+            border: solid black 1px;
+        }
+
+        /* modal */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">TC Auto</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="Cars.html">CARS</a></li>
+                    <li><a href="Trucks.html">TRUCKS</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <h1>TC Auto: Trucks</h1><br />
+    <!--MODAL FROM HOMEWORK DEMOS ****-->
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Shipping details</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Truck will be delivered to customer within 5-7 business days</p>
+        </div>
+    </div>
+    <!--**************-->
+    <br /><br />
+    <!-- wrapper for vue to display-->
+    <div class="wrapper" id="vueTrucks">
+        <div class="box" style="grid-column: 1/span 2;">
+            <select v-model="userTruck">
+                <option v-for="(item, index) in trucks" :value=item>{{item.brand + " " + item.truck_mod + " (" +
+                    item.year + ")"}}</option>
+            </select>
+        </div>
+        <div class="box" style="grid-column: 3 ; grid-row: 1/span 4">
+            <img style="width: 350px;" :src=userTruck.truck_img>
+        </div>
+        <div class="box">
+            Truck:
+        </div>
+        <div class="box">
+            {{userTruck.brand + " " + userTruck.truck_mod}}
+        </div>
+        <div class="box">
+            Year:
+        </div>
+        <div class="box">
+            {{userTruck.year}}
+        </div>
+        <div class="box">
+            Color:
+        </div>
+        <div class="box">
+            {{userTruck.color}}
+        </div>
+        <div class="box">
+            Interior Color:
+        </div>
+        <div class="box">
+            {{userTruck.interior_color}}
+        </div>
+        <br />
+        <div class="box">
+            Miles:
+        </div>
+        <div class="box">
+            {{userTruck.miles}}
+        </div>
+        <br />
+        <div class="box">
+            Price:
+        </div>
+        <div class="box">
+            ${{userTruck.price}}
+        </div>
+        <br />
+        <div class="box">
+            Down Payment: $
+        </div>
+        <div class="box">
+            <input :value=deposit v-on:change="handleInput">
+        </div>
+        <br />
+        <div class="box" style="grid-Column: 1/span 2">
+            <input type="button" id="calc" value="Display Remaining Balance" v-on:click="calc" />
+        </div>
+        <div class="box" style="grid-Column: 1/span 2">
+            Total after Down Payment: $ {{total}}
+        </div>
+
+
+    </div>
+
+    <script>
+        //VUE***********
+        const Truck = {
+            data() {
+                return {
+                    userTruck: "",
+                    trucks: [],
+                    deposit: "",
+                    total: 0
+
+                }
+            },
+            methods: {
+                handleInput(){
+                    this.deposit = event.target.value;
+                },
+                // calculate remaining balance after down payment
+                calc() {
+                    let deposit = this.deposit;
+                    let price = this.userTruck.price
+                    if (deposit > price) {
+                        this.total = "Error: Deposit cannot be more than Price"//throw erroneous number to symbolize error
+                    } else if (deposit < 0) {
+                        this.total = "Error: Deposit cannot be negative"
+                    } else if (isNaN(deposit)) {
+                        this.total = "Error: Deposit must be a number with no letters or other characters"
+                    }
+                    else {
+                        this.total = price - deposit;
+                    }
+                }
+            },
+
+            mounted() {
+                console.log("mounted")
+                /* 
+                   pre-selecting a radio button has moved
+                   mounted occurs after created; however, 
+                   created is calling fetch which is asynchronous 
+                   so do anything relying on data in the 
+                   fetch-then 
+                */
+            },
+
+
+            created() {
+                console.log("created")
+                // use arrow function so fetch-then not claiming "this"
+                // this "this" means the VUE object 
+                fetch('trucks.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        this.trucks = data;
+                        this.userTruck = this.trucks[Math.floor(Math.random() * this.trucks.length)];
+                        
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+
+            }
+        } //end SIZE
+
+        Vue.createApp(Truck).mount('#vueTrucks')
+
+
+
+
+
+
+
+
+        //*MODAL**************
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

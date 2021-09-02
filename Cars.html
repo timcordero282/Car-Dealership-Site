@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- METAS **********-->
+    <!-- meta charset-->
+    <meta charset="UTF-8">
+    <!--meta author-->
+    <meta name="author" content="Tim Cordero">
+    <!--meta description-->
+    <meta name="description" content="Project: Auto Sales Website. Cars Page">
+    <!--meta keywords-->
+    <meta name="keywords" content="Cars, Auto, Trucks, Motor">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--***********************************-->
+
+    <title>Tim Cordero's Car Sales</title>
+
+    <!-- 3 files below are for the use of bootstrap formatting-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!--React CDN connection--><!--REACT PAGE-->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            background-color: beige;
+            color: rgb(29, 98, 228);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        button {
+            padding: 5px;
+            font-size: large;
+        }
+
+        input {
+            width: 80px;
+        }
+        button:hover{
+            color: beige;
+            background-color: rgb(29, 98, 228);
+        }
+        input:hover{
+            color: beige;
+            background-color: rgb(29, 98, 228);
+        }
+        #calc{
+            width: 250px;
+        }
+
+        /*grid formatting */
+        .wrapper {
+            text-align: left;
+            display: grid;
+            grid-gap: 5px;
+            width: 500px;
+            grid-template-columns: 140px 150px 400px;
+            background-color: #000;
+            color: #111;
+            border-radius: 5px;
+            /* justify-content: center; */
+            margin-Left: auto;
+            margin-right: auto;
+        }
+
+        .box {
+            background-color: beige;
+            color: rgb(29, 98, 228);
+            border-radius: 5px;
+            padding: 30px;
+            font-size: 1em;
+            border: solid black 1px;
+        }
+
+        /* modal */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">TC Auto</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="Cars.html">CARS</a></li>
+                    <li><a href="Trucks.html">TRUCKS</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <h1>TC Auto: Cars</h1><br />
+    <!--MODAL FROM HOMEWORK DEMOS ****-->
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Shipping details</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Car will be delivered to customer within 5-7 business days</p>
+        </div>
+    </div>
+    <!--**************-->
+    <br/><br/>
+
+    <!-- Display for react-->
+    <div class="wrapper" id="divCarDisplay"></div>
+    <script type="text/babel">
+        class MyCars extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    carIndex: 0,
+                    cars: [],
+                    deposit: "",
+                    total: 0,
+                    isLoading: true
+                }
+            }
+
+            handleChange = e => {
+                // setState() is async
+                this.setState({ carIndex: event.target.value });
+            }
+            handleInput = e => {
+                // setState() is async
+                this.setState({ deposit: event.target.value });
+            }
+            /* determine remaining balance after down payment */
+            calc = e => {
+                let copy = this.state.total;
+                let copyDeposit = this.state.deposit;
+                let price = parseFloat(this.state.cars[this.state.carIndex].price)
+                if(copyDeposit > price){
+                    copy = "Error: Deposit cannot be more than Price"//throw erroneous number to symbolize error
+                }else if(copyDeposit < 0){
+                    copy="Error: Deposit cannot be negative"
+                }else if(isNaN(copyDeposit)){
+                    copy="Error: Deposit must be a number with no letters or other characters"
+                }
+                else{
+                    copy = price - copyDeposit;
+                }
+                this.setState({ total: copy})
+            }
+
+            componentDidMount() {
+                fetch('cars.json')
+                    .then(response => response.json())
+                    .then(data => this.setState({ cars: data, isLoading: false, carIndex: Math.floor(Math.random() * data.length) }));
+            }
+
+            render() {
+
+                if (this.state.isLoading) {
+                    return (<p>Loading ....</p>)
+                } else {
+                    return (
+                        <> {/* Display select bar and corresonding car details */}
+                            <div className="box" style={{ gridColumn: "1 /span 2", gridRow: "1" }}>
+                                <select value={this.state.carIndex} onChange={this.handleChange}>
+                                    {
+                                        this.state.cars.map((car, i) =>
+                                        (
+                                            <option key={i} value={i}>
+                                                {car.brand + " " + car.car_mod + " (" + car.year + ")"}
+                                            </option>
+                                        )
+                                        )
+                                    }
+                                </select>
+                            </div>
+
+                            <div className="box" style={{ gridColumn: "3", gridRow: "1 / span 4" }}>
+                                <img src={this.state.cars[this.state.carIndex].car_img} width="350" />
+                            </div>
+
+                            <div className="box">Car: </div>
+                            <div className="box"> {this.state.cars[this.state.carIndex].brand + " " + this.state.cars[this.state.carIndex].car_mod}</div>
+
+                            <div className="box">Year: </div>
+                            <div className="box"> {this.state.cars[this.state.carIndex].year}</div>
+
+                            <div className="box">Color: </div>
+                            <div className="box"> {this.state.cars[this.state.carIndex].color}</div>
+
+                            <div className="box">Interior Color: </div>
+                            <div className="box"> {this.state.cars[this.state.carIndex].interior_color}</div><br />
+
+                            <div className="box">Miles: </div>
+                            <div className="box"> {this.state.cars[this.state.carIndex].miles}</div><br />
+
+                            <div className="box">Price: </div>
+                            <div className="box"> ${this.state.cars[this.state.carIndex].price}</div><br />
+
+                            <div className="box" >Down Payment: $</div>
+                            <div className="box"> <input type="text" value={this.state.deposit} onChange={this.handleInput}/></div><br />
+
+                            <div className="box" style={{gridColumn: "1/span 2"}}>
+                                <input type="button" id="calc" value="Display Remaining Balance" onClick={this.calc} />
+                            </div><br/>
+                            <div className="box" style={{gridColumn: "1/span 2"}}>
+                                Total after Down Payment: $ {this.state.total}
+                                </div>
+
+                        </>
+                    )
+                }
+            }
+        }
+
+        ReactDOM.render(<MyCars />, document.querySelector('#divCarDisplay'))
+    </script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
